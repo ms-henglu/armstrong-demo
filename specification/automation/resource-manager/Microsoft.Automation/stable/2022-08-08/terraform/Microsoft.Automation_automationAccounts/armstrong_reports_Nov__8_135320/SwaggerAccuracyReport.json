@@ -1,0 +1,421 @@
+{
+  "coveredSpecFiles": [
+    "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json"
+  ],
+  "allOperations": 9,
+  "coveredOperations": 9,
+  "unCoveredOperationsList": [
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "operationIds": []
+    }
+  ],
+  "failedOperations": 4,
+  "errors": [
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: RegistrationUrl",
+      "issueSource": "response",
+      "operationId": "AutomationAccount_Update",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L495"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: RuntimeConfiguration",
+      "issueSource": "response",
+      "operationId": "AutomationAccount_Update",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L495"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: error",
+      "issueSource": "response",
+      "operationId": "Statistics_ListByAutomationAccount",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L27"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: error",
+      "issueSource": "response",
+      "operationId": "Statistics_ListByAutomationAccount",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L27"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: error",
+      "issueSource": "response",
+      "operationId": "Statistics_ListByAutomationAccount",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L27"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: error",
+      "issueSource": "response",
+      "operationId": "Statistics_ListByAutomationAccount",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L27"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: RegistrationUrl",
+      "issueSource": "response",
+      "operationId": "AutomationAccount_Get",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L495"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: RuntimeConfiguration",
+      "issueSource": "response",
+      "operationId": "AutomationAccount_Get",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L495"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: RegistrationUrl",
+      "issueSource": "response",
+      "operationId": "AutomationAccount_Get",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L495"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: RuntimeConfiguration",
+      "issueSource": "response",
+      "operationId": "AutomationAccount_Get",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L495"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: RegistrationUrl",
+      "issueSource": "response",
+      "operationId": "AutomationAccount_Get",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L495"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: RuntimeConfiguration",
+      "issueSource": "response",
+      "operationId": "AutomationAccount_Get",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L495"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: RegistrationUrl",
+      "issueSource": "response",
+      "operationId": "AutomationAccount_Get",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L495"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: RuntimeConfiguration",
+      "issueSource": "response",
+      "operationId": "AutomationAccount_Get",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L495"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: RegistrationUrl",
+      "issueSource": "response",
+      "operationId": "AutomationAccount_CreateOrUpdate",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L495"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: RuntimeConfiguration",
+      "issueSource": "response",
+      "operationId": "AutomationAccount_CreateOrUpdate",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L495"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: RegistrationUrl",
+      "issueSource": "response",
+      "operationId": "AutomationAccount_Get",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L495"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: RuntimeConfiguration",
+      "issueSource": "response",
+      "operationId": "AutomationAccount_Get",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L495"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: error",
+      "issueSource": "response",
+      "operationId": "Statistics_ListByAutomationAccount",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L27"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: error",
+      "issueSource": "response",
+      "operationId": "Statistics_ListByAutomationAccount",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L27"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: error",
+      "issueSource": "response",
+      "operationId": "Statistics_ListByAutomationAccount",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L27"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: error",
+      "issueSource": "response",
+      "operationId": "Statistics_ListByAutomationAccount",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L27"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: RegistrationUrl",
+      "issueSource": "response",
+      "operationId": "AutomationAccount_Get",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L495"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: RuntimeConfiguration",
+      "issueSource": "response",
+      "operationId": "AutomationAccount_Get",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L495"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: RegistrationUrl",
+      "issueSource": "response",
+      "operationId": "AutomationAccount_Get",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L495"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: RuntimeConfiguration",
+      "issueSource": "response",
+      "operationId": "AutomationAccount_Get",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L495"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: RegistrationUrl",
+      "issueSource": "response",
+      "operationId": "AutomationAccount_Get",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L495"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: RuntimeConfiguration",
+      "issueSource": "response",
+      "operationId": "AutomationAccount_Get",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L495"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: RegistrationUrl",
+      "issueSource": "response",
+      "operationId": "AutomationAccount_Get",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L495"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: RuntimeConfiguration",
+      "issueSource": "response",
+      "operationId": "AutomationAccount_Get",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L495"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: RegistrationUrl",
+      "issueSource": "response",
+      "operationId": "AutomationAccount_CreateOrUpdate",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L495"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: RuntimeConfiguration",
+      "issueSource": "response",
+      "operationId": "AutomationAccount_CreateOrUpdate",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L495"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: RegistrationUrl",
+      "issueSource": "response",
+      "operationId": "AutomationAccount_Get",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L495"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: RuntimeConfiguration",
+      "issueSource": "response",
+      "operationId": "AutomationAccount_Get",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L495"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: RegistrationUrl",
+      "issueSource": "response",
+      "operationId": "AutomationAccount_Get",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L495"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: RuntimeConfiguration",
+      "issueSource": "response",
+      "operationId": "AutomationAccount_Get",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L495"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: RegistrationUrl",
+      "issueSource": "response",
+      "operationId": "AutomationAccount_Get",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L495"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: RuntimeConfiguration",
+      "issueSource": "response",
+      "operationId": "AutomationAccount_Get",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L495"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: error",
+      "issueSource": "response",
+      "operationId": "AutomationAccount_Get",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L27"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: RegistrationUrl",
+      "issueSource": "response",
+      "operationId": "AutomationAccount_CreateOrUpdate",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L495"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: RuntimeConfiguration",
+      "issueSource": "response",
+      "operationId": "AutomationAccount_CreateOrUpdate",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L495"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: RegistrationUrl",
+      "issueSource": "response",
+      "operationId": "AutomationAccount_Get",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L495"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: RuntimeConfiguration",
+      "issueSource": "response",
+      "operationId": "AutomationAccount_Get",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L495"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: RegistrationUrl",
+      "issueSource": "response",
+      "operationId": "AutomationAccount_Get",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L495"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: RuntimeConfiguration",
+      "issueSource": "response",
+      "operationId": "AutomationAccount_Get",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json#L495"
+    }
+  ]
+}

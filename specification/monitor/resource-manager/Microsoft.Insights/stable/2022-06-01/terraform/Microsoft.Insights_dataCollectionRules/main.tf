@@ -52,6 +52,24 @@ resource "azapi_resource" "workspace" {
   response_export_values    = ["*"]
 }
 
+resource "azapi_resource" "solution" {
+  type      = "Microsoft.OperationsManagement/solutions@2015-11-01-preview"
+  parent_id = azapi_resource.resourceGroup.id
+  name      = "WindowsEventForwarding(${azapi_resource.workspace.name})"
+  location  = azapi_resource.resourceGroup.location
+  body = jsonencode({
+    plan = {
+      name          = "WindowsEventForwarding(${azapi_resource.workspace.name})"
+      publisher     = "Microsoft"
+      product       = "OMSGallery/WindowsEventForwarding"
+      promotionCode = ""
+    }
+    properties = {
+      workspaceResourceId = azapi_resource.workspace.id
+    }
+  })
+}
+
 // OperationId: DataCollectionRules_Create, DataCollectionRules_Get, DataCollectionRules_Delete
 // PUT GET DELETE /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionRules/{dataCollectionRuleName}
 resource "azapi_resource" "dataCollectionRule" {
@@ -131,14 +149,6 @@ resource "azapi_resource" "dataCollectionRule" {
         ]
         windowsEventLogs = [
           {
-            name = "cloudSecurityTeamEvents"
-            streams = [
-              "Microsoft-WindowsEvent",
-            ]
-            xPathQueries = [
-            ]
-          },
-          {
             name = "appTeam1AppEvents"
             streams = [
               "Microsoft-WindowsEvent",
@@ -161,6 +171,7 @@ resource "azapi_resource" "dataCollectionRule" {
     }
   })
   schema_validation_enabled = false
+  depends_on                = [azapi_resource.solution]
 }
 
 // OperationId: DataCollectionRules_Update

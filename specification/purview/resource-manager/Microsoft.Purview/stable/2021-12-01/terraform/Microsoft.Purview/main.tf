@@ -10,9 +10,14 @@ provider "azapi" {
   skip_provider_registration = false
 }
 
+provider "azurerm" {
+  features {
+  }
+}
+
 variable "resource_name" {
   type    = string
-  default = "acctest7541"
+  default = "acctest1978"
 }
 
 variable "location" {
@@ -20,13 +25,42 @@ variable "location" {
   default = "westeurope"
 }
 
+data "azurerm_client_config" "current" {
+
+}
+
+resource "azapi_resource" "resourceGroup" {
+  type     = "Microsoft.Resources/resourceGroups@2020-06-01"
+  name     = var.resource_name
+  location = var.location
+}
+
+resource "azapi_resource" "account" {
+  type      = "Microsoft.Purview/accounts@2021-12-01"
+  parent_id = azapi_resource.resourceGroup.id
+  name      = var.resource_name
+  location  = var.location
+  body = jsonencode({
+    identity = {
+      type                   = "SystemAssigned"
+      userAssignedIdentities = null
+    }
+    properties = {
+      publicNetworkAccess = "Enabled"
+    }
+  })
+  schema_validation_enabled = false
+  response_export_values    = ["*"]
+}
+
 // OperationId: DefaultAccounts_Get
 // GET /providers/Microsoft.Purview/getDefaultAccount
-data "azapi_resource_action" "getDefaultAccount" {
+resource "azapi_resource_action" "getDefaultAccount" {
   type        = "Microsoft.Purview@2021-12-01"
   resource_id = "/providers/Microsoft.Purview"
-  action      = "getDefaultAccount"
+  action      = "getDefaultAccount?scopeType=Subscription&scopeTenantId=${data.azurerm_client_config.current.tenant_id}&scope=${data.azapi_resource.subscription.name}"
   method      = "GET"
+  depends_on = [ azapi_resource_action.setDefaultAccount ]
 }
 
 // OperationId: DefaultAccounts_Remove
@@ -36,6 +70,7 @@ resource "azapi_resource_action" "removeDefaultAccount" {
   resource_id = "/providers/Microsoft.Purview"
   action      = "removeDefaultAccount"
   method      = "POST"
+  depends_on  = [azapi_resource_action.setDefaultAccount, data.azapi_resource_action.getDefaultAccount]
 }
 
 // OperationId: DefaultAccounts_Set
@@ -46,12 +81,12 @@ resource "azapi_resource_action" "setDefaultAccount" {
   action      = "setDefaultAccount"
   method      = "POST"
   body = jsonencode({
-    accountName       = "myDefaultAccount"
-    resourceGroupName = "rg-1"
-    scope             = "12345678-1234-1234-1234-12345678abcd"
-    scopeTenantId     = "12345678-1234-1234-1234-12345678abcd"
-    scopeType         = "Tenant"
-    subscriptionId    = "12345678-1234-1234-1234-12345678aaaa"
+    accountName       = azapi_resource.account.name
+    resourceGroupName = azapi_resource.resourceGroup.name
+    scope             = data.azapi_resource.subscription.name
+    scopeTenantId     = data.azurerm_client_config.current.tenant_id
+    scopeType         = "Subscription"
+    subscriptionId    = data.azapi_resource.subscription.name
   })
 }
 

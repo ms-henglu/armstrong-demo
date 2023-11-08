@@ -12,7 +12,7 @@ provider "azapi" {
 
 variable "resource_name" {
   type    = string
-  default = "acctest0573"
+  default = "acctest6962"
 }
 
 variable "location" {
@@ -49,7 +49,7 @@ resource "azapi_resource" "account" {
 data "azapi_resource" "privateLinkResource" {
   type      = "Microsoft.Purview/accounts/privateLinkResources@2021-12-01"
   parent_id = azapi_resource.account.id
-  name      = var.resource_name
+  name      = "account"
 }
 
 // OperationId: PrivateLinkResources_ListByAccount
@@ -57,6 +57,5 @@ data "azapi_resource" "privateLinkResource" {
 data "azapi_resource_list" "listPrivateLinkResourcesByAccount" {
   type       = "Microsoft.Purview/accounts/privateLinkResources@2021-12-01"
   parent_id  = azapi_resource.account.id
-  depends_on = [data.azapi_resource.privateLinkResource]
 }
 

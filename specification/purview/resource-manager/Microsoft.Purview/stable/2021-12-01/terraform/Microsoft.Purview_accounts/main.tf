@@ -12,7 +12,7 @@ provider "azapi" {
 
 variable "resource_name" {
   type    = string
-  default = "acctest4235"
+  default = "acctest2590"
 }
 
 variable "location" {
@@ -33,10 +33,16 @@ resource "azapi_resource" "account" {
   parent_id = azapi_resource.resourceGroup.id
   name      = var.resource_name
   location  = var.location
+  identity {
+    type         = "SystemAssigned"
+    identity_ids = []
+  }
+
   body = jsonencode({
     properties = {
       managedResourceGroupName            = "custom-rgname"
       managedResourcesPublicNetworkAccess = "Enabled"
+      managedEventHubState                = "Enabled"
     }
   })
   schema_validation_enabled = false
@@ -50,12 +56,21 @@ resource "azapi_resource_action" "patch_account" {
   action      = ""
   method      = "PATCH"
   body = jsonencode({
-    cloudConnectors = {
+    properties = {
+      managedResourceGroupName            = "aaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      managedResourcesPublicNetworkAccess = "Disabled"
+      publicNetworkAccess                 = "NotSpecified"
     }
-    managedResourceGroupName            = "aaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-    managedResourcesPublicNetworkAccess = "Disabled"
-    publicNetworkAccess                 = "NotSpecified"
   })
+}
+
+resource "azapi_resource" "user" {
+  type                      = "Microsoft.ManagedIdentity/userAssignedIdentities@2023-01-31"
+  parent_id                 = azapi_resource.resourceGroup.id
+  name                      = var.resource_name
+  location                  = var.location
+  schema_validation_enabled = false
+  response_export_values    = ["*"]
 }
 
 // OperationId: Accounts_AddRootCollectionAdmin
@@ -66,7 +81,7 @@ resource "azapi_resource_action" "addRootCollectionAdmin" {
   action      = "addRootCollectionAdmin"
   method      = "POST"
   body = jsonencode({
-    objectId = "7e8de0e7-2bfc-4e1f-9659-2a5785e4356f"
+    objectId = jsondecode(azapi_resource.user.output).properties.principalId
   })
 }
 

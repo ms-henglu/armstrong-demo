@@ -100,20 +100,18 @@ resource "azapi_resource" "privateEndpoint" {
   })
 }
 
-// OperationId: PrivateEndpointConnections_CreateOrUpdate, PrivateEndpointConnections_Get
-// PUT GET /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}
-resource "azapi_update_resource" "privateEndpointConnection" {
+data "azapi_resource_id" "privateEndpointConnection" {
   type      = "Microsoft.Purview/accounts/privateEndpointConnections@2021-12-01"
   parent_id = azapi_resource.account.id
-  name      = local.privateEndpointConnectionName
-  body = jsonencode({
-    properties = {
-      privateLinkServiceConnectionState = {
-        description = "Approved by johndoe@company.com"
-        status      = "Approved"
-      }
-    }
-  })
+  name      = local.privateEndpointConnectionName == null ? "placeholder" : local.privateEndpointConnectionName
+}
+
+// OperationId: PrivateEndpointConnections_Delete
+// DELETE /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}
+resource "azapi_resource_action" "delete_privateEndpointConnection" {
+  type      = "Microsoft.Purview/accounts/privateEndpointConnections@2021-12-01"
+  resource_id = data.azapi_resource_id.privateEndpointConnection.id
+  method = "DELETE"
 }
 
 locals {

@@ -1,0 +1,34 @@
+{
+  "coveredSpecFiles": [
+    "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/purview/resource-manager/Microsoft.Purview/stable/2021-12-01/purview.json"
+  ],
+  "allOperations": 26,
+  "coveredOperations": 8,
+  "unCoveredOperationsList": [
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/purview/resource-manager/Microsoft.Purview/stable/2021-12-01/purview.json",
+      "operationIds": [
+        "Accounts_CheckNameAvailability",
+        "Accounts_Delete",
+        "DefaultAccounts_Get",
+        "DefaultAccounts_Remove",
+        "DefaultAccounts_Set",
+        "Features_SubscriptionGet",
+        "KafkaConfigurations_CreateOrUpdate",
+        "KafkaConfigurations_Delete",
+        "KafkaConfigurations_Get",
+        "KafkaConfigurations_ListByAccount",
+        "Operations_List",
+        "PrivateEndpointConnections_CreateOrUpdate",
+        "PrivateEndpointConnections_Delete",
+        "PrivateEndpointConnections_Get",
+        "PrivateEndpointConnections_ListByAccount",
+        "PrivateLinkResources_GetByGroupId",
+        "PrivateLinkResources_ListByAccount",
+        "Usages_Get"
+      ]
+    }
+  ],
+  "failedOperations": 0,
+  "errors": []
+}

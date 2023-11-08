@@ -1,0 +1,59 @@
+{
+  "coveredSpecFiles": [
+    "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/purview/resource-manager/Microsoft.Purview/stable/2021-12-01/purview.json"
+  ],
+  "allOperations": 26,
+  "coveredOperations": 2,
+  "unCoveredOperationsList": [
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/purview/resource-manager/Microsoft.Purview/stable/2021-12-01/purview.json",
+      "operationIds": [
+        "Accounts_AddRootCollectionAdmin",
+        "Accounts_CheckNameAvailability",
+        "Accounts_CreateOrUpdate",
+        "Accounts_Delete",
+        "Accounts_Get",
+        "Accounts_ListByResourceGroup",
+        "Accounts_ListBySubscription",
+        "Accounts_ListKeys",
+        "Accounts_Update",
+        "DefaultAccounts_Get",
+        "DefaultAccounts_Remove",
+        "DefaultAccounts_Set",
+        "Features_AccountGet",
+        "Features_SubscriptionGet",
+        "KafkaConfigurations_CreateOrUpdate",
+        "KafkaConfigurations_Delete",
+        "KafkaConfigurations_Get",
+        "KafkaConfigurations_ListByAccount",
+        "Operations_List",
+        "PrivateEndpointConnections_CreateOrUpdate",
+        "PrivateEndpointConnections_Delete",
+        "PrivateEndpointConnections_Get",
+        "PrivateEndpointConnections_ListByAccount",
+        "Usages_Get"
+      ]
+    }
+  ],
+  "failedOperations": 1,
+  "errors": [
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/purview/resource-manager/Microsoft.Purview/stable/2021-12-01/purview.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: count",
+      "issueSource": "response",
+      "operationId": "PrivateLinkResources_ListByAccount",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/purview/resource-manager/Microsoft.Purview/stable/2021-12-01/purview.json#L2368"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/purview/resource-manager/Microsoft.Purview/stable/2021-12-01/purview.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: count",
+      "issueSource": "response",
+      "operationId": "PrivateLinkResources_ListByAccount",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/purview/resource-manager/Microsoft.Purview/stable/2021-12-01/purview.json#L2368"
+    }
+  ]
+}

@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Swagger Accuracy Report:azure-data-tables</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Coverage, Swagger, Report, Tools">
+    <meta name="description" content="Swagger Accuracy Report">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/pixelbrackets/gfm-stylesheet/dist/gfm.min.css" /> -->
+    <style>
+        :root {
+            --report-bg-green: #91cc74;
+            --report-bg-red: #ee6666;
+            --report-bg-yellow: #fac858;
+            --report-bg-blue: #e6e9f0;
+            --report-color-green: #218838;
+            --report-color-yellow: #e0a800;
+            --report-color-red: #c82333;
+            --report-base-color: #333;
+            --border-color: #b7b7b7;
+            --report-color-black: #000;
+            --report-color-white: #fff;
+            --title-small: #707070;
+            --link-color: #1453ff;
+            --link-hover-color: #7096ff;
+            --content-hover-color: #f5f5f5;
+            --line-color: #43425a;
+        }
+
+        .report-content {
+            margin: 10px auto 40px;
+            min-width: 900px;
+            max-width: 1500px;
+            color: var(--report-base-color);
+            font-family: 'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans GB',
+                'Microsoft YaHei UI', sans-serif;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            margin-bottom: 14px;
+        }
+
+        a {
+            text-decoration: none;
+            position: relative;
+            display: inline-block;
+            color: var(--link-color);
+        }
+
+        .disableTr {
+            display: none;
+        }
+
+        .table-body {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .table-body::-webkit-scrollbar {
+            display: none;
+            /* Chrome Safari */
+            -ms-overflow-style: none;
+            /* IE 10+ */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+
+        table {
+            width: 100%;
+            table-layout: auto;
+            border-collapse: separate;
+            border-spacing: 0;
+            text-align: left;
+            border-left: 1px solid var(--border-color);
+        }
+
+        table tr:hover>td {
+            background-color: var(--content-hover-color);
+        }
+
+        th,
+        td {
+            box-sizing: border-box;
+            text-align: center;
+            padding: 16px;
+            height: 55px;
+            line-height: 22px;
+        }
+
+        table>thead>tr>th {
+            font-weight: 500;
+            font-size: 18px;
+            background-color: var(--report-bg-blue);
+            color: var(--report-base-color);
+            font-weight: bold;
+            border-top: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        table>tbody>tr>td {
+            text-align: left;
+            font-size: 16px;
+            transition: background 0.3s;
+            border-top: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+        }
+
+        table>tbody>tr:first-child>td {
+            border-top: none;
+        }
+
+        .details {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: start;
+        }
+
+        .details .limitText {
+            width: 92%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .details .btnMore {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            position: relative;
+            color: var(--link-color);
+            font-size: 16px;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+
+        .details .btnMore span {
+            display: block;
+        }
+
+        .details .btnMore::after {
+            content: '';
+            margin: auto;
+            display: inline-block;
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            right: 0;
+            width: 0px;
+            height: 2px;
+            background: var(--link-hover-color);
+            transition: 0.1s;
+            border-radius: 50px;
+        }
+
+        .details .btnMore:hover {
+            color: var(--link-hover-color);
+        }
+
+        .details .btnMore .arrow {
+            width: 8px;
+            height: 8px;
+            color: var(--link-color);
+            border-left: 2px solid var(--link-color);
+            border-bottom: 2px solid var(--link-color);
+            border-radius: 10%;
+            display: inline-block;
+            transform: rotate(315deg);
+            transform-origin: 50% 50%;
+            transition: all 0.2s ease-in;
+            position: absolute;
+            right: -10px;
+            top: 3px;
+        }
+
+        .details .btnMore:hover .arrow {
+            color: var(--link-hover-color);
+            border-color: var(--link-hover-color);
+        }
+
+        .details .btnMore .collapse {
+            top: 6px;
+            transform: rotate(225deg);
+        }
+
+        .summary {
+            margin: 40px 0 50px 0;
+        }
+
+        .summary.scroll {
+            margin: 20px 0 20px 0;
+        }
+
+        .summary .title {
+            margin: 0px 0 10px 0px;
+            font-size: 2.5em;
+        }
+
+        .summary .title::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 2px;
+            margin-top: 4px;
+            background-color: var(--line-color);
+        }
+
+        .summary .timeStamp {
+            font-size: 16px;
+            margin: 2px 0 0 0;
+            color: var(--title-small);
+        }
+
+        .coverage {
+            margin-bottom: 40px;
+        }
+
+        .coverage table td:nth-child(-n + 5) {
+            text-align: center;
+        }
+
+        .coverage table .file {
+            word-wrap: break-word;
+            word-break: break-all;
+        }
+
+        .coverage .table-header table th a {
+            color: var(--report-color-black);
+        }
+
+        .coverage .table-header table th a:hover {
+            color: var(--report-color-black);
+        }
+
+        .notTested {
+            margin-bottom: 40px;
+        }
+        
+        .notTested table {
+            border: none;
+        }
+
+        .notTested .table-body {
+            border: none;
+        }
+
+        .notTested .table-body>table>tbody>tr>td {
+            border: none;
+        }
+
+        .notTested .table-body table tbody tr td {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .notTested table tbody tr td:nth-child(-n + 2) {
+            text-align: center;
+            word-break: break-all;
+        }
+
+        .notTested .operationTag {
+            text-align: left;
+        }
+
+        .notTested .operationTag .tag {
+            color: var(--report-base-colo);
+            background-color: var(--report-bg-blue);
+            border: 1px solid var(--report-bg-blue);
+            display: inline-block;
+            height: 32px;
+            padding: 0 10px;
+            margin: 4px 2px;
+            line-height: 30px;
+            font-size: 14px;
+            border-radius: 4px;
+            box-sizing: border-box;
+            white-space: nowrap;
+        }
+
+        .notTested table,
+        .testFailed table,
+        .runtimeExceptions table,
+        .innerTable table {
+            table-layout: fixed;
+        }
+
+        .testFailed table {
+            border: none;
+        }
+        .testFailed .table-body {
+            border: none;
+        }
+
+        .testFailed .table-body {
+            border: none;
+        }
+
+        .testFailed .table-body>table>tbody>tr>td {
+            border: none;
+        }
+
+        .testFailed .table-body table tbody tr td {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .testFailed>article>.table-body>table>tbody>tr>td:first-child {
+            text-align: left;
+            border-right: none;
+        }
+
+        .testFailed table tbody tr td:nth-child(-n + 3) {
+            word-break: break-word;
+        }
+
+        .testFailed .table-body table tbody tr .wrapper-td {
+            background-color: var(--content-hover-color);
+            padding: 0px;
+        }
+
+        .innerTable {
+            border-left: 1px solid var(--border-color);
+            padding: 0px 0px 0px 40px;
+        }
+
+        .innerTable table {
+            border: none;
+        }
+
+        .innerTable table tr {
+            background-color: var(--report-color-white);
+        }
+
+        .innerTable table th,
+        .innerTable table td {
+            border: none;
+            text-align: left;
+        }
+
+        .testFailed .table-body .innerTable table tbody tr td {
+            border-bottom: none;
+        }
+
+        .runtimeExceptions .table-body {
+            overflow-y: auto;
+            max-height: 400px;
+        }
+
+        .runtimeExceptions table tbody tr td {
+            word-break: break-all;
+        }
+
+        .innerTable>table>thead>tr>th:last-child,
+        .innerTable>table>tbody>tr>td:last-child {
+            border-right: 1px solid var(--border-color);
+        }
+
+        .innerTable>table>tbody>tr>td:first-child {
+            border-left: 1px solid var(--border-color);
+        }
+
+        .innerTable table th {
+            background-color: var(--content-hover-color);
+            color: #000000d9;
+            position: relative;
+            padding: 16px;
+            line-height: 22px;
+            height: 55px;
+            font-size: 18px;
+            box-sizing: border-box;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .innerTable table tr:not(:last-child)>td {
+            border-bottom: 1px solid var(--border-color);
+            transition: background 0.3s;
+            font-size: 16px;
+            word-break: break-all;
+        }
+
+        .content-label {
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .content-label .btnMore {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            position: relative;
+            color: var(--link-color);
+            font-size: 16px;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+
+        .content-label .btnMore h2 {
+            display: block;
+        }
+
+        .content-label .btnMore::after {
+            content: '';
+            margin: auto;
+            display: inline-block;
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            right: 0;
+            width: 0px;
+            height: 2px;
+            background: var(--report-base-color);
+            transition: 0.1s;
+            border-radius: 50px;
+        }
+
+        .content-label .btnMore:hover {
+            color: var(--report-base-color);
+        }
+
+        .content-label .btnMore .arrow {
+            width: 8px;
+            height: 8px;
+            color: var(--report-base-color);
+            border-left: 2px solid var(--report-base-color);
+            border-bottom: 2px solid var(--report-base-color);
+            border-radius: 10%;
+            display: inline-block;
+            transform: rotate(315deg);
+            transform-origin: 50% 50%;
+            transition: all 0.2s ease-in;
+            position: absolute;
+            right: -10px;
+            top: 30px;
+        }
+
+        .content-label .btnMore:hover .arrow {
+            color: var(--report-base-color);
+            border-color: var(--report-base-color);
+        }
+
+        .content-label .btnMore .collapse {
+            top: 30px;
+            transform: rotate(225deg);
+        }
+        /* radio */
+        .switch-button{
+            display: none;
+        }
+        .switch-button+label{
+            display: inline-block;
+            position: relative;
+            transition: all .3s;
+            width: 60px;
+            height: 30px;
+            border-radius: 15px;
+            background-color: #ccc;
+        }
+        .switch-button:checked+label{
+            background-color: lightgreen;
+        }
+        .switch-button+label::before{
+            content: '';
+            display: block;
+            height: 25px;
+            width: 25px;
+            position: absolute;
+            border-radius: 25px;
+            left: 2px;
+            top: 2px;
+            background-color: #fff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+            transition: all .3s;
+        }
+        .switch-button:checked+label::before{
+            left: 32px;
+            transition:  all .2s linear;
+        }
+        
+        /* markdown table */
+        #markdownCont table{
+            border-left: none;
+        }
+
+        #markdownCont table>thead>tr>th {
+            border-left: 1px solid var(--border-color);
+        }
+
+        #markdownCont table>tbody>tr>td {
+            border-left: 1px solid var(--border-color);
+        }
+
+        #markdownCont table>thead>tr>th:last-child,
+        #markdownCont table>tbody>tr>td:last-child {
+            border-left: none;
+        }
+        
+        #markdownCont table>tbody>tr:last-child td{
+            border: none;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        /* simulate hash link by jQuery */
+        .hashLinkClass {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="report-content">
+        <section class="summary">
+            <h1 class="title">Swagger Accuracy Report:azure-data-tables</h1>
+            <!-- TODO: localize the UTC date via JS -->
+            <h3 class="timeStamp">Generated 2023-11-01 at 13:44PM. <a target="_blank" href="https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/swagger-accuracy-report.md">Documentation</a></h3>
+        </section>
+
+        <div id="markdownTmp" style="display: none;">
+            
+        </div>
+
+        
+        <div class="content-label"><button class="btnMore"><h2 style="color: var(--report-base-color);">purview.json/2021-12-01<i class="arrow collapse"></i></h2></button></div>
+        <div style="padding: 0px 15px 0px;">
+        <section class="coverage">
+            <h2>Operations Summary</h2>
+            <article>
+                <div class="table-header">
+                    <table summary="Test Coverage Details" cellspacing="0" cellpadding="0">
+                        <colgroup>
+                            <col style="width: 13%;" />
+                            <col style="width: 19%;" />
+                            <col style="width: 19%;" />
+                            <col style="width: 19%;" />
+                            <col style="width: 30%;" />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>Total ( 26 )</th>
+                                <th style="background-color: var(--report-bg-yellow)">
+                                   Untested<span class="hashLinkClass" data-hash-link="MissingTest_0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" class="svg_dd790ee3 x-hidden-focus" focusable="false" width="25" height="15" style="vertical-align: middle;"><path d="M1707 715q76 27 139 75t108 111 69 138 25 156q0 106-40 199t-110 162-163 110-199 41h-512q-106 0-199-40t-162-110-110-163-41-199q0-106 40-199t110-162 163-110 199-41h171q0 35-13 66t-37 54-55 36-66 14q-71 0-133 27t-108 73-73 109-27 133q0 71 27 133t73 108 108 73 133 27h512q70 0 132-27t109-73 73-108 27-133q0-92-46-168t-124-123V715zM171 683q0 91 46 167t124 124v189q-76-27-139-75T94 977 25 839 0 683q0-106 40-199t110-162 163-110 199-41h512q106 0 199 40t162 110 110 163 41 199q0 106-40 199t-110 162-163 110-199 41H853q0-35 13-66t37-54 54-37 67-14q70 0 132-27t109-73 73-108 27-133q0-70-26-132t-73-109-109-74-133-27H512q-71 0-133 27t-108 73-73 109-27 133z" class="x-hidden-focus"></path></svg>
+                                   ( 24 )
+                                   </span>
+                                </th>
+                                <th style="background-color: var(--report-bg-red);">
+                                   Fail<span  class="hashLinkClass" data-hash-link="testFailed_0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" class="svg_dd790ee3 x-hidden-focus" focusable="false" width="25" height="15" style="vertical-align: middle;"><path d="M1707 715q76 27 139 75t108 111 69 138 25 156q0 106-40 199t-110 162-163 110-199 41h-512q-106 0-199-40t-162-110-110-163-41-199q0-106 40-199t110-162 163-110 199-41h171q0 35-13 66t-37 54-55 36-66 14q-71 0-133 27t-108 73-73 109-27 133q0 71 27 133t73 108 108 73 133 27h512q70 0 132-27t109-73 73-108 27-133q0-92-46-168t-124-123V715zM171 683q0 91 46 167t124 124v189q-76-27-139-75T94 977 25 839 0 683q0-106 40-199t110-162 163-110 199-41h512q106 0 199 40t162 110 110 163 41 199q0 106-40 199t-110 162-163 110-199 41H853q0-35 13-66t37-54 54-37 67-14q70 0 132-27t109-73 73-108 27-133q0-70-26-132t-73-109-109-74-133-27H512q-71 0-133 27t-108 73-73 109-27 133z" class="x-hidden-focus"></path></svg>
+                                   </span>
+                                ( 0 )
+                                </th>
+                                <th style="background-color: var(--report-bg-green);">Pass ( 2 )</th>
+                                <th style="background-color: var(--report-bg-blue);">
+                                    <div class="file">
+                                        purview.json<a target="_blank" href="&#x2F;Users&#x2F;luheng&#x2F;go&#x2F;src&#x2F;github.com&#x2F;Azure&#x2F;azure-rest-api-specs&#x2F;specification&#x2F;purview&#x2F;resource-manager&#x2F;Microsoft.Purview&#x2F;stable&#x2F;2021-12-01&#x2F;purview.json"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" class="svg_dd790ee3 x-hidden-focus" focusable="false" width="25" height="15" style="vertical-align: middle;"><path d="M1707 715q76 27 139 75t108 111 69 138 25 156q0 106-40 199t-110 162-163 110-199 41h-512q-106 0-199-40t-162-110-110-163-41-199q0-106 40-199t110-162 163-110 199-41h171q0 35-13 66t-37 54-55 36-66 14q-71 0-133 27t-108 73-73 109-27 133q0 71 27 133t73 108 108 73 133 27h512q70 0 132-27t109-73 73-108 27-133q0-92-46-168t-124-123V715zM171 683q0 91 46 167t124 124v189q-76-27-139-75T94 977 25 839 0 683q0-106 40-199t110-162 163-110 199-41h512q106 0 199 40t162 110 110 163 41 199q0 106-40 199t-110 162-163 110-199 41H853q0-35 13-66t37-54 54-37 67-14q70 0 132-27t109-73 73-108 27-133q0-70-26-132t-73-109-109-74-133-27H512q-71 0-133 27t-108 73-73 109-27 133z" class="x-hidden-focus"></path></svg></a>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </article>
+        </section>
+        </div>
+        <div style="padding: 0px 15px 20px; display:none;" class="content-collapse">
+
+        <section class="testFailed">
+            <h2 class="title" id="testFailed_0">Failed Operations ( 0 )</h2>
+            <article>
+                <div class="table-body">
+                    <table summary="Operations Test Failed" cellspacing="0" cellpadding="0">
+                        <colgroup>
+                            <col style="width: 30%" />
+                            <col style="width: 70%" />
+                        </colgroup>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+        </section>
+
+        <section class="notTested">
+            <h2 class="title" id="MissingTest_0">Untested Operations ( 24 )</h2>
+            <article>
+                <div class="table-body">
+                    <table summary="Operations Not Tested" cellspacing="0" cellpadding="0">
+                        <colgroup>
+                            <col style="width: 15%" />
+                            <col style="width: 85%" />
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="operationTag">
+                                        <span class="tag">Accounts_ListByResourceGroup<a target="_blank" href="&#x2F;Users&#x2F;luheng&#x2F;go&#x2F;src&#x2F;github.com&#x2F;Azure&#x2F;azure-rest-api-specs&#x2F;specification&#x2F;purview&#x2F;resource-manager&#x2F;Microsoft.Purview&#x2F;stable&#x2F;2021-12-01&#x2F;purview.json"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" class="svg_dd790ee3 x-hidden-focus" focusable="false" width="25" height="15" style="vertical-align: middle;"><path d="M1707 715q76 27 139 75t108 111 69 138 25 156q0 106-40 199t-110 162-163 110-199 41h-512q-106 0-199-40t-162-110-110-163-41-199q0-106 40-199t110-162 163-110 199-41h171q0 35-13 66t-37 54-55 36-66 14q-71 0-133 27t-108 73-73 109-27 133q0 71 27 133t73 108 108 73 133 27h512q70 0 132-27t109-73 73-108 27-133q0-92-46-168t-124-123V715zM171 683q0 91 46 167t124 124v189q-76-27-139-75T94 977 25 839 0 683q0-106 40-199t110-162 163-110 199-41h512q106 0 199 40t162 110 110 163 41 199q0 106-40 199t-110 162-163 110-199 41H853q0-35 13-66t37-54 54-37 67-14q70 0 132-27t109-73 73-108 27-133q0-70-26-132t-73-109-109-74-133-27H512q-71 0-133 27t-108 73-73 109-27 133z" class="x-hidden-focus"></path></svg></a></span>
+                                        <span class="tag">Accounts_ListBySubscription<a target="_blank" href="&#x2F;Users&#x2F;luheng&#x2F;go&#x2F;src&#x2F;github.com&#x2F;Azure&#x2F;azure-rest-api-specs&#x2F;specification&#x2F;purview&#x2F;resource-manager&#x2F;Microsoft.Purview&#x2F;stable&#x2F;2021-12-01&#x2F;purview.json"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" class="svg_dd790ee3 x-hidden-focus" focusable="false" width="25" height="15" style="vertical-align: middle;"><path d="M1707 715q76 27 139 75t108 111 69 138 25 156q0 106-40 199t-110 162-163 110-199 41h-512q-106 0-199-40t-162-110-110-163-41-199q0-106 40-199t110-162 163-110 199-41h171q0 35-13 66t-37 54-55 36-66 14q-71 0-133 27t-108 73-73 109-27 133q0 71 27 133t73 108 108 73 133 27h512q70 0 132-27t109-73 73-108 27-133q0-92-46-168t-124-123V715zM171 683q0 91 46 167t124 124v189q-76-27-139-75T94 977 25 839 0 683q0-106 40-199t110-162 163-110 199-41h512q106 0 199 40t162 110 110 163 41 199q0 106-40 199t-110 162-163 110-199 41H853q0-35 13-66t37-54 54-37 67-14q70 0 132-27t109-73 73-108 27-133q0-70-26-132t-73-109-109-74-133-27H512q-71 0-133 27t-108 73-73 109-27 133z" class="x-hidden-focus"></path></svg></a></span>
+                                        <span class="tag">Accounts_Get<a target="_blank" href="&#x2F;Users&#x2F;luheng&#x2F;go&#x2F;src&#x2F;github.com&#x2F;Azure&#x2F;azure-rest-api-specs&#x2F;specification&#x2F;purview&#x2F;resource-manager&#x2F;Microsoft.Purview&#x2F;stable&#x2F;2021-12-01&#x2F;purview.json"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" class="svg_dd790ee3 x-hidden-focus" focusable="false" width="25" height="15" style="vertical-align: middle;"><path d="M1707 715q76 27 139 75t108 111 69 138 25 156q0 106-40 199t-110 162-163 110-199 41h-512q-106 0-199-40t-162-110-110-163-41-199q0-106 40-199t110-162 163-110 199-41h171q0 35-13 66t-37 54-55 36-66 14q-71 0-133 27t-108 73-73 109-27 133q0 71 27 133t73 108 108 73 133 27h512q70 0 132-27t109-73 73-108 27-133q0-92-46-168t-124-123V715zM171 683q0 91 46 167t124 124v189q-76-27-139-75T94 977 25 839 0 683q0-106 40-199t110-162 163-110 199-41h512q106 0 199 40t162 110 110 163 41 199q0 106-40 199t-110 162-163 110-199 41H853q0-35 13-66t37-54 54-37 67-14q70 0 132-27t109-73 73-108 27-133q0-70-26-132t-73-109-109-74-133-27H512q-71 0-133 27t-108 73-73 109-27 133z" class="x-hidden-focus"></path></svg></a></span>
+                                        <span class="tag">Accounts_CreateOrUpdate<a target="_blank" href="&#x2F;Users&#x2F;luheng&#x2F;go&#x2F;src&#x2F;github.com&#x2F;Azure&#x2F;azure-rest-api-specs&#x2F;specification&#x2F;purview&#x2F;resource-manager&#x2F;Microsoft.Purview&#x2F;stable&#x2F;2021-12-01&#x2F;purview.json"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" class="svg_dd790ee3 x-hidden-focus" focusable="false" width="25" height="15" style="vertical-align: middle;"><path d="M1707 715q76 27 139 75t108 111 69 138 25 156q0 106-40 199t-110 162-163 110-199 41h-512q-106 0-199-40t-162-110-110-163-41-199q0-106 40-199t110-162 163-110 199-41h171q0 35-13 66t-37 54-55 36-66 14q-71 0-133 27t-108 73-73 109-27 133q0 71 27 133t73 108 108 73 133 27h512q70 0 132-27t109-73 73-108 27-133q0-92-46-168t-124-123V715zM171 683q0 91 46 167t124 124v189q-76-27-139-75T94 977 25 839 0 683q0-106 40-199t110-162 163-110 199-41h512q106 0 199 40t162 110 110 163 41 199q0 106-40 199t-110 162-163 110-199 41H853q0-35 13-66t37-54 54-37 67-14q70 0 132-27t109-73 73-108 27-133q0-70-26-132t-73-109-109-74-133-27H512q-71 0-133 27t-108 73-73 109-27 133z" class="x-hidden-focus"></path></svg></a></span>
+                                        <span class="tag">Accounts_Delete<a target="_blank" href="&#x2F;Users&#x2F;luheng&#x2F;go&#x2F;src&#x2F;github.com&#x2F;Azure&#x2F;azure-rest-api-specs&#x2F;specification&#x2F;purview&#x2F;resource-manager&#x2F;Microsoft.Purview&#x2F;stable&#x2F;2021-12-01&#x2F;purview.json"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" class="svg_dd790ee3 x-hidden-focus" focusable="false" width="25" height="15" style="vertical-align: middle;"><path d="M1707 715q76 27 139 75t108 111 69 138 25 156q0 106-40 199t-110 162-163 110-199 41h-512q-106 0-199-40t-162-110-110-163-41-199q0-106 40-199t110-162 163-110 199-41h171q0 35-13 66t-37 54-55 36-66 14q-71 0-133 27t-108 73-73 109-27 133q0 71 27 133t73 108 108 73 133 27h512q70 0 132-27t109-73 73-108 27-133q0-92-46-168t-124-123V715zM171 683q0 91 46 167t124 124v189q-76-27-139-75T94 977 25 839 0 683q0-106 40-199t110-162 163-110 199-41h512q106 0 199 40t162 110 110 163 41 199q0 106-40 199t-110 162-163 110-199 41H853q0-35 13-66t37-54 54-37 67-14q70 0 132-27t109-73 73-108 27-133q0-70-26-132t-73-109-109-74-133-27H512q-71 0-133 27t-108 73-73 109-27 133z" class="x-hidden-focus"></path></svg></a></span>
+                                        <span class="tag">Accounts_Update<a target="_blank" href="&#x2F;Users&#x2F;luheng&#x2F;go&#x2F;src&#x2F;github.com&#x2F;Azure&#x2F;azure-rest-api-specs&#x2F;specification&#x2F;purview&#x2F;resource-manager&#x2F;Microsoft.Purview&#x2F;stable&#x2F;2021-12-01&#x2F;purview.json"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" class="svg_dd790ee3 x-hidden-focus" focusable="false" width="25" height="15" style="vertical-align: middle;"><path d="M1707 715q76 27 139 75t108 111 69 138 25 156q0 106-40 199t-110 162-163 110-199 41h-512q-106 0-199-40t-162-110-110-163-41-199q0-106 40-199t110-162 163-110 199-41h171q0 35-13 66t-37 54-55 36-66 14q-71 0-133 27t-108 73-73 109-27 133q0 71 27 133t73 108 108 73 133 27h512q70 0 132-27t109-73 73-108 27-133q0-92-46-168t-124-123V715zM171 683q0 91 46 167t124 124v189q-76-27-139-75T94 977 25 839 0 683q0-106 40-199t110-162 163-110 199-41h512q106 0 199 40t162 110 110 163 41 199q0 106-40 199t-110 162-163 110-199 41H853q0-35 13-66t37-54 54-37 67-14q70 0 132-27t109-73 73-108 27-133q0-70-26-132t-73-109-109-74-133-27H512q-71 0-133 27t-108 73-73 109-27 133z" class="x-hidden-focus"></path></svg></a></span>
+                                        <span class="tag">Accounts_ListKeys<a target="_blank" href="&#x2F;Users&#x2F;luheng&#x2F;go&#x2F;src&#x2F;github.com&#x2F;Azure&#x2F;azure-rest-api-specs&#x2F;specification&#x2F;purview&#x2F;resource-manager&#x2F;Microsoft.Purview&#x2F;stable&#x2F;2021-12-01&#x2F;purview.json"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" class="svg_dd790ee3 x-hidden-focus" focusable="false" width="25" height="15" style="vertical-align: middle;"><path d="M1707 715q76 27 139 75t108 111 69 138 25 156q0 106-40 199t-110 162-163 110-199 41h-512q-106 0-199-40t-162-110-110-163-41-199q0-106 40-199t110-162 163-110 199-41h171q0 35-13 66t-37 54-55 36-66 14q-71 0-133 27t-108 73-73 109-27 133q0 71 27 133t73 108 108 73 133 27h512q70 0 132-27t109-73 73-108 27-133q0-92-46-168t-124-123V715zM171 683q0 91 46 167t124 124v189q-76-27-139-75T94 977 25 839 0 683q0-106 40-199t110-162 163-110 199-41h512q106 0 199 40t162 110 110 163 41 199q0 106-40 199t-110 162-163 110-199 41H853q0-35 13-66t37-54 54-37 67-14q70 0 132-27t109-73 73-108 27-133q0-70-26-132t-73-109-109-74-133-27H512q-71 0-133 27t-108 73-73 109-27 133z" class="x-hidden-focus"></path></svg></a></span>
+                                        <span class="tag">Accounts_AddRootCollectionAdmin<a target="_blank" href="&#x2F;Users&#x2F;luheng&#x2F;go&#x2F;src&#x2F;github.com&#x2F;Azure&#x2F;azure-rest-api-specs&#x2F;specification&#x2F;purview&#x2F;resource-manager&#x2F;Microsoft.Purview&#x2F;stable&#x2F;2021-12-01&#x2F;purview.json"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" class="svg_dd790ee3 x-hidden-focus" focusable="false" width="25" height="15" style="vertical-align: middle;"><path d="M1707 715q76 27 139 75t108 111 69 138 25 156q0 106-40 199t-110 162-163 110-199 41h-512q-106 0-199-40t-162-110-110-163-41-199q0-106 40-199t110-162 163-110 199-41h171q0 35-13 66t-37 54-55 36-66 14q-71 0-133 27t-108 73-73 109-27 133q0 71 27 133t73 108 108 73 133 27h512q70 0 132-27t109-73 73-108 27-133q0-92-46-168t-124-123V715zM171 683q0 91 46 167t124 124v189q-76-27-139-75T94 977 25 839 0 683q0-106 40-199t110-162 163-110 199-41h512q106 0 199 40t162 110 110 163 41 199q0 106-40 199t-110 162-163 110-199 41H853q0-35 13-66t37-54 54-37 67-14q70 0 132-27t109-73 73-108 27-133q0-70-26-132t-73-109-109-74-133-27H512q-71 0-133 27t-108 73-73 109-27 133z" class="x-hidden-focus"></path></svg></a></span>
+                                        <span class="tag">Accounts_CheckNameAvailability<a target="_blank" href="&#x2F;Users&#x2F;luheng&#x2F;go&#x2F;src&#x2F;github.com&#x2F;Azure&#x2F;azure-rest-api-specs&#x2F;specification&#x2F;purview&#x2F;resource-manager&#x2F;Microsoft.Purview&#x2F;stable&#x2F;2021-12-01&#x2F;purview.json"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" class="svg_dd790ee3 x-hidden-focus" focusable="false" width="25" height="15" style="vertical-align: middle;"><path d="M1707 715q76 27 139 75t108 111 69 138 25 156q0 106-40 199t-110 162-163 110-199 41h-512q-106 0-199-40t-162-110-110-163-41-199q0-106 40-199t110-162 163-110 199-41h171q0 35-13 66t-37 54-55 36-66 14q-71 0-133 27t-108 73-73 109-27 133q0 71 27 133t73 108 108 73 133 27h512q70 0 132-27t109-73 73-108 27-133q0-92-46-168t-124-123V715zM171 683q0 91 46 167t124 124v189q-76-27-139-75T94 977 25 839 0 683q0-106 40-199t110-162 163-110 199-41h512q106 0 199 40t162 110 110 163 41 199q0 106-40 199t-110 162-163 110-199 41H853q0-35 13-66t37-54 54-37 67-14q70 0 132-27t109-73 73-108 27-133q0-70-26-132t-73-109-109-74-133-27H512q-71 0-133 27t-108 73-73 109-27 133z" class="x-hidden-focus"></path></svg></a></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="operationTag">
+                                        <span class="tag">DefaultAccounts_Get<a target="_blank" href="&#x2F;Users&#x2F;luheng&#x2F;go&#x2F;src&#x2F;github.com&#x2F;Azure&#x2F;azure-rest-api-specs&#x2F;specification&#x2F;purview&#x2F;resource-manager&#x2F;Microsoft.Purview&#x2F;stable&#x2F;2021-12-01&#x2F;purview.json"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" class="svg_dd790ee3 x-hidden-focus" focusable="false" width="25" height="15" style="vertical-align: middle;"><path d="M1707 715q76 27 139 75t108 111 69 138 25 156q0 106-40 199t-110 162-163 110-199 41h-512q-106 0-199-40t-162-110-110-163-41-199q0-106 40-199t110-162 163-110 199-41h171q0 35-13 66t-37 54-55 36-66 14q-71 0-133 27t-108 73-73 109-27 133q0 71 27 133t73 108 108 73 133 27h512q70 0 132-27t109-73 73-108 27-133q0-92-46-168t-124-123V715zM171 683q0 91 46 167t124 124v189q-76-27-139-75T94 977 25 839 0 683q0-106 40-199t110-162 163-110 199-41h512q106 0 199 40t162 110 110 163 41 199q0 106-40 199t-110 162-163 110-199 41H853q0-35 13-66t37-54 54-37 67-14q70 0 132-27t109-73 73-108 27-133q0-70-26-132t-73-109-109-74-133-27H512q-71 0-133 27t-108 73-73 109-27 133z" class="x-hidden-focus"></path></svg></a></span>
+                                        <span class="tag">DefaultAccounts_Set<a target="_blank" href="&#x2F;Users&#x2F;luheng&#x2F;go&#x2F;src&#x2F;github.com&#x2F;Azure&#x2F;azure-rest-api-specs&#x2F;specification&#x2F;purview&#x2F;resource-manager&#x2F;Microsoft.Purview&#x2F;stable&#x2F;2021-12-01&#x2F;purview.json"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" class="svg_dd790ee3 x-hidden-focus" focusable="false" width="25" height="15" style="vertical-align: middle;"><path d="M1707 715q76 27 139 75t108 111 69 138 25 156q0 106-40 199t-110 162-163 110-199 41h-512q-106 0-199-40t-162-110-110-163-41-199q0-106 40-199t110-162 163-110 199-41h171q0 35-13 66t-37 54-55 36-66 14q-71 0-133 27t-108 73-73 109-27 133q0 71 27 133t73 108 108 73 133 27h512q70 0 132-27t109-73 73-108 27-133q0-92-46-168t-124-123V715zM171 683q0 91 46 167t124 124v189q-76-27-139-75T94 977 25 839 0 683q0-106 40-199t110-162 163-110 199-41h512q106 0 199 40t162 110 110 163 41 199q0 106-40 199t-110 162-163 110-199 41H853q0-35 13-66t37-54 54-37 67-14q70 0 132-27t109-73 73-108 27-133q0-70-26-132t-73-109-109-74-133-27H512q-71 0-133 27t-108 73-73 109-27 133z" class="x-hidden-focus"></path></svg></a></span>
+                                        <span class="tag">DefaultAccounts_Remove<a target="_blank" href="&#x2F;Users&#x2F;luheng&#x2F;go&#x2F;src&#x2F;github.com&#x2F;Azure&#x2F;azure-rest-api-specs&#x2F;specification&#x2F;purview&#x2F;resource-manager&#x2F;Microsoft.Purview&#x2F;stable&#x2F;2021-12-01&#x2F;purview.json"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" class="svg_dd790ee3 x-hidden-focus" focusable="false" width="25" height="15" style="vertical-align: middle;"><path d="M1707 715q76 27 139 75t108 111 69 138 25 156q0 106-40 199t-110 162-163 110-199 41h-512q-106 0-199-40t-162-110-110-163-41-199q0-106 40-199t110-162 163-110 199-41h171q0 35-13 66t-37 54-55 36-66 14q-71 0-133 27t-108 73-73 109-27 133q0 71 27 133t73 108 108 73 133 27h512q70 0 132-27t109-73 73-108 27-133q0-92-46-168t-124-123V715zM171 683q0 91 46 167t124 124v189q-76-27-139-75T94 977 25 839 0 683q0-106 40-199t110-162 163-110 199-41h512q106 0 199 40t162 110 110 163 41 199q0 106-40 199t-110 162-163 110-199 41H853q0-35 13-66t37-54 54-37 67-14q70 0 132-27t109-73 73-108 27-133q0-70-26-132t-73-109-109-74-133-27H512q-71 0-133 27t-108 73-73 109-27 133z" class="x-hidden-focus"></path></svg></a></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="operationTag">
+                                        <span class="tag">Features_AccountGet<a target="_blank" href="&#x2F;Users&#x2F;luheng&#x2F;go&#x2F;src&#x2F;github.com&#x2F;Azure&#x2F;azure-rest-api-specs&#x2F;specification&#x2F;purview&#x2F;resource-manager&#x2F;Microsoft.Purview&#x2F;stable&#x2F;2021-12-01&#x2F;purview.json"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" class="svg_dd790ee3 x-hidden-focus" focusable="false" width="25" height="15" style="vertical-align: middle;"><path d="M1707 715q76 27 139 75t108 111 69 138 25 156q0 106-40 199t-110 162-163 110-199 41h-512q-106 0-199-40t-162-110-110-163-41-199q0-106 40-199t110-162 163-110 199-41h171q0 35-13 66t-37 54-55 36-66 14q-71 0-133 27t-108 73-73 109-27 133q0 71 27 133t73 108 108 73 133 27h512q70 0 132-27t109-73 73-108 27-133q0-92-46-168t-124-123V715zM171 683q0 91 46 167t124 124v189q-76-27-139-75T94 977 25 839 0 683q0-106 40-199t110-162 163-110 199-41h512q106 0 199 40t162 110 110 163 41 199q0 106-40 199t-110 162-163 110-199 41H853q0-35 13-66t37-54 54-37 67-14q70 0 132-27t109-73 73-108 27-133q0-70-26-132t-73-109-109-74-133-27H512q-71 0-133 27t-108 73-73 109-27 133z" class="x-hidden-focus"></path></svg></a></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="operationTag">
+                                        <span class="tag">KafkaConfigurations_Get<a target="_blank" href="&#x2F;Users&#x2F;luheng&#x2F;go&#x2F;src&#x2F;github.com&#x2F;Azure&#x2F;azure-rest-api-specs&#x2F;specification&#x2F;purview&#x2F;resource-manager&#x2F;Microsoft.Purview&#x2F;stable&#x2F;2021-12-01&#x2F;purview.json"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" class="svg_dd790ee3 x-hidden-focus" focusable="false" width="25" height="15" style="vertical-align: middle;"><path d="M1707 715q76 27 139 75t108 111 69 138 25 156q0 106-40 199t-110 162-163 110-199 41h-512q-106 0-199-40t-162-110-110-163-41-199q0-106 40-199t110-162 163-110 199-41h171q0 35-13 66t-37 54-55 36-66 14q-71 0-133 27t-108 73-73 109-27 133q0 71 27 133t73 108 108 73 133 27h512q70 0 132-27t109-73 73-108 27-133q0-92-46-168t-124-123V715zM171 683q0 91 46 167t124 124v189q-76-27-139-75T94 977 25 839 0 683q0-106 40-199t110-162 163-110 199-41h512q106 0 199 40t162 110 110 163 41 199q0 106-40 199t-110 162-163 110-199 41H853q0-35 13-66t37-54 54-37 67-14q70 0 132-27t109-73 73-108 27-133q0-70-26-132t-73-109-109-74-133-27H512q-71 0-133 27t-108 73-73 109-27 133z" class="x-hidden-focus"></path></svg></a></span>
+                                        <span class="tag">KafkaConfigurations_CreateOrUpdate<a target="_blank" href="&#x2F;Users&#x2F;luheng&#x2F;go&#x2F;src&#x2F;github.com&#x2F;Azure&#x2F;azure-rest-api-specs&#x2F;specification&#x2F;purview&#x2F;resource-manager&#x2F;Microsoft.Purview&#x2F;stable&#x2F;2021-12-01&#x2F;purview.json"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" class="svg_dd790ee3 x-hidden-focus" focusable="false" width="25" height="15" style="vertical-align: middle;"><path d="M1707 715q76 27 139 75t108 111 69 138 25 156q0 106-40 199t-110 162-163 110-199 41h-512q-106 0-199-40t-162-110-110-163-41-199q0-106 40-199t110-162 163-110 199-41h171q0 35-13 66t-37 54-55 36-66 14q-71 0-133 27t-108 73-73 109-27 133q0 71 27 133t73 108 108 73 133 27h512q70 0 132-27t109-73 73-108 27-133q0-92-46-168t-124-123V715zM171 683q0 91 46 167t124 124v189q-76-27-139-75T94 977 25 839 0 683q0-106 40-199t110-162 163-110 199-41h512q106 0 199 40t162 110 110 163 41 199q0 106-40 199t-110 162-163 110-199 41H853q0-35 13-66t37-54 54-37 67-14q70 0 132-27t109-73 73-108 27-133q0-70-26-132t-73-109-109-74-133-27H512q-71 0-133 27t-108 73-73 109-27 133z" class="x-hidden-focus"></path></svg></a></span>
+                                        <span class="tag">KafkaConfigurations_Delete<a target="_blank" href="&#x2F;Users&#x2F;luheng&#x2F;go&#x2F;src&#x2F;github.com&#x2F;Azure&#x2F;azure-rest-api-specs&#x2F;specification&#x2F;purview&#x2F;resource-manager&#x2F;Microsoft.Purview&#x2F;stable&#x2F;2021-12-01&#x2F;purview.json"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" class="svg_dd790ee3 x-hidden-focus" focusable="false" width="25" height="15" style="vertical-align: middle;"><path d="M1707 715q76 27 139 75t108 111 69 138 25 156q0 106-40 199t-110 162-163 110-199 41h-512q-106 0-199-40t-162-110-110-163-41-199q0-106 40-199t110-162 163-110 199-41h171q0 35-13 66t-37 54-55 36-66 14q-71 0-133 27t-108 73-73 109-27 133q0 71 27 133t73 108 108 73 133 27h512q70 0 132-27t109-73 73-108 27-133q0-92-46-168t-124-123V715zM171 683q0 91 46 167t124 124v189q-76-27-139-75T94 977 25 839 0 683q0-106 40-199t110-162 163-110 199-41h512q106 0 199 40t162 110 110 163 41 199q0 106-40 199t-110 162-163 110-199 41H853q0-35 13-66t37-54 54-37 67-14q70 0 132-27t109-73 73-108 27-133q0-70-26-132t-73-109-109-74-133-27H512q-71 0-133 27t-108 73-73 109-27 133z" class="x-hidden-focus"></path></svg></a></span>
+                                        <span class="tag">KafkaConfigurations_ListByAccount<a target="_blank" href="&#x2F;Users&#x2F;luheng&#x2F;go&#x2F;src&#x2F;github.com&#x2F;Azure&#x2F;azure-rest-api-specs&#x2F;specification&#x2F;purview&#x2F;resource-manager&#x2F;Microsoft.Purview&#x2F;stable&#x2F;2021-12-01&#x2F;purview.json"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" class="svg_dd790ee3 x-hidden-focus" focusable="false" width="25" height="15" style="vertical-align: middle;"><path d="M1707 715q76 27 139 75t108 111 69 138 25 156q0 106-40 199t-110 162-163 110-199 41h-512q-106 0-199-40t-162-110-110-163-41-199q0-106 40-199t110-162 163-110 199-41h171q0 35-13 66t-37 54-55 36-66 14q-71 0-133 27t-108 73-73 109-27 133q0 71 27 133t73 108 108 73 133 27h512q70 0 132-27t109-73 73-108 27-133q0-92-46-168t-124-123V715zM171 683q0 91 46 167t124 124v189q-76-27-139-75T94 977 25 839 0 683q0-106 40-199t110-162 163-110 199-41h512q106 0 199 40t162 110 110 163 41 199q0 106-40 199t-110 162-163 110-199 41H853q0-35 13-66t37-54 54-37 67-14q70 0 132-27t109-73 73-108 27-133q0-70-26-132t-73-109-109-74-133-27H512q-71 0-133 27t-108 73-73 109-27 133z" class="x-hidden-focus"></path></svg></a></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="operationTag">
+                                        <span class="tag">Operations_List<a target="_blank" href="&#x2F;Users&#x2F;luheng&#x2F;go&#x2F;src&#x2F;github.com&#x2F;Azure&#x2F;azure-rest-api-specs&#x2F;specification&#x2F;purview&#x2F;resource-manager&#x2F;Microsoft.Purview&#x2F;stable&#x2F;2021-12-01&#x2F;purview.json"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" class="svg_dd790ee3 x-hidden-focus" focusable="false" width="25" height="15" style="vertical-align: middle;"><path d="M1707 715q76 27 139 75t108 111 69 138 25 156q0 106-40 199t-110 162-163 110-199 41h-512q-106 0-199-40t-162-110-110-163-41-199q0-106 40-199t110-162 163-110 199-41h171q0 35-13 66t-37 54-55 36-66 14q-71 0-133 27t-108 73-73 109-27 133q0 71 27 133t73 108 108 73 133 27h512q70 0 132-27t109-73 73-108 27-133q0-92-46-168t-124-123V715zM171 683q0 91 46 167t124 124v189q-76-27-139-75T94 977 25 839 0 683q0-106 40-199t110-162 163-110 199-41h512q106 0 199 40t162 110 110 163 41 199q0 106-40 199t-110 162-163 110-199 41H853q0-35 13-66t37-54 54-37 67-14q70 0 132-27t109-73 73-108 27-133q0-70-26-132t-73-109-109-74-133-27H512q-71 0-133 27t-108 73-73 109-27 133z" class="x-hidden-focus"></path></svg></a></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="operationTag">
+                                        <span class="tag">PrivateEndpointConnections_ListByAccount<a target="_blank" href="&#x2F;Users&#x2F;luheng&#x2F;go&#x2F;src&#x2F;github.com&#x2F;Azure&#x2F;azure-rest-api-specs&#x2F;specification&#x2F;purview&#x2F;resource-manager&#x2F;Microsoft.Purview&#x2F;stable&#x2F;2021-12-01&#x2F;purview.json"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" class="svg_dd790ee3 x-hidden-focus" focusable="false" width="25" height="15" style="vertical-align: middle;"><path d="M1707 715q76 27 139 75t108 111 69 138 25 156q0 106-40 199t-110 162-163 110-199 41h-512q-106 0-199-40t-162-110-110-163-41-199q0-106 40-199t110-162 163-110 199-41h171q0 35-13 66t-37 54-55 36-66 14q-71 0-133 27t-108 73-73 109-27 133q0 71 27 133t73 108 108 73 133 27h512q70 0 132-27t109-73 73-108 27-133q0-92-46-168t-124-123V715zM171 683q0 91 46 167t124 124v189q-76-27-139-75T94 977 25 839 0 683q0-106 40-199t110-162 163-110 199-41h512q106 0 199 40t162 110 110 163 41 199q0 106-40 199t-110 162-163 110-199 41H853q0-35 13-66t37-54 54-37 67-14q70 0 132-27t109-73 73-108 27-133q0-70-26-132t-73-109-109-74-133-27H512q-71 0-133 27t-108 73-73 109-27 133z" class="x-hidden-focus"></path></svg></a></span>
+                                        <span class="tag">PrivateEndpointConnections_Get<a target="_blank" href="&#x2F;Users&#x2F;luheng&#x2F;go&#x2F;src&#x2F;github.com&#x2F;Azure&#x2F;azure-rest-api-specs&#x2F;specification&#x2F;purview&#x2F;resource-manager&#x2F;Microsoft.Purview&#x2F;stable&#x2F;2021-12-01&#x2F;purview.json"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" class="svg_dd790ee3 x-hidden-focus" focusable="false" width="25" height="15" style="vertical-align: middle;"><path d="M1707 715q76 27 139 75t108 111 69 138 25 156q0 106-40 199t-110 162-163 110-199 41h-512q-106 0-199-40t-162-110-110-163-41-199q0-106 40-199t110-162 163-110 199-41h171q0 35-13 66t-37 54-55 36-66 14q-71 0-133 27t-108 73-73 109-27 133q0 71 27 133t73 108 108 73 133 27h512q70 0 132-27t109-73 73-108 27-133q0-92-46-168t-124-123V715zM171 683q0 91 46 167t124 124v189q-76-27-139-75T94 977 25 839 0 683q0-106 40-199t110-162 163-110 199-41h512q106 0 199 40t162 110 110 163 41 199q0 106-40 199t-110 162-163 110-199 41H853q0-35 13-66t37-54 54-37 67-14q70 0 132-27t109-73 73-108 27-133q0-70-26-132t-73-109-109-74-133-27H512q-71 0-133 27t-108 73-73 109-27 133z" class="x-hidden-focus"></path></svg></a></span>
+                                        <span class="tag">PrivateEndpointConnections_CreateOrUpdate<a target="_blank" href="&#x2F;Users&#x2F;luheng&#x2F;go&#x2F;src&#x2F;github.com&#x2F;Azure&#x2F;azure-rest-api-specs&#x2F;specification&#x2F;purview&#x2F;resource-manager&#x2F;Microsoft.Purview&#x2F;stable&#x2F;2021-12-01&#x2F;purview.json"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" class="svg_dd790ee3 x-hidden-focus" focusable="false" width="25" height="15" style="vertical-align: middle;"><path d="M1707 715q76 27 139 75t108 111 69 138 25 156q0 106-40 199t-110 162-163 110-199 41h-512q-106 0-199-40t-162-110-110-163-41-199q0-106 40-199t110-162 163-110 199-41h171q0 35-13 66t-37 54-55 36-66 14q-71 0-133 27t-108 73-73 109-27 133q0 71 27 133t73 108 108 73 133 27h512q70 0 132-27t109-73 73-108 27-133q0-92-46-168t-124-123V715zM171 683q0 91 46 167t124 124v189q-76-27-139-75T94 977 25 839 0 683q0-106 40-199t110-162 163-110 199-41h512q106 0 199 40t162 110 110 163 41 199q0 106-40 199t-110 162-163 110-199 41H853q0-35 13-66t37-54 54-37 67-14q70 0 132-27t109-73 73-108 27-133q0-70-26-132t-73-109-109-74-133-27H512q-71 0-133 27t-108 73-73 109-27 133z" class="x-hidden-focus"></path></svg></a></span>
+                                        <span class="tag">PrivateEndpointConnections_Delete<a target="_blank" href="&#x2F;Users&#x2F;luheng&#x2F;go&#x2F;src&#x2F;github.com&#x2F;Azure&#x2F;azure-rest-api-specs&#x2F;specification&#x2F;purview&#x2F;resource-manager&#x2F;Microsoft.Purview&#x2F;stable&#x2F;2021-12-01&#x2F;purview.json"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" class="svg_dd790ee3 x-hidden-focus" focusable="false" width="25" height="15" style="vertical-align: middle;"><path d="M1707 715q76 27 139 75t108 111 69 138 25 156q0 106-40 199t-110 162-163 110-199 41h-512q-106 0-199-40t-162-110-110-163-41-199q0-106 40-199t110-162 163-110 199-41h171q0 35-13 66t-37 54-55 36-66 14q-71 0-133 27t-108 73-73 109-27 133q0 71 27 133t73 108 108 73 133 27h512q70 0 132-27t109-73 73-108 27-133q0-92-46-168t-124-123V715zM171 683q0 91 46 167t124 124v189q-76-27-139-75T94 977 25 839 0 683q0-106 40-199t110-162 163-110 199-41h512q106 0 199 40t162 110 110 163 41 199q0 106-40 199t-110 162-163 110-199 41H853q0-35 13-66t37-54 54-37 67-14q70 0 132-27t109-73 73-108 27-133q0-70-26-132t-73-109-109-74-133-27H512q-71 0-133 27t-108 73-73 109-27 133z" class="x-hidden-focus"></path></svg></a></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="operationTag">
+                                        <span class="tag">PrivateLinkResources_ListByAccount<a target="_blank" href="&#x2F;Users&#x2F;luheng&#x2F;go&#x2F;src&#x2F;github.com&#x2F;Azure&#x2F;azure-rest-api-specs&#x2F;specification&#x2F;purview&#x2F;resource-manager&#x2F;Microsoft.Purview&#x2F;stable&#x2F;2021-12-01&#x2F;purview.json"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" class="svg_dd790ee3 x-hidden-focus" focusable="false" width="25" height="15" style="vertical-align: middle;"><path d="M1707 715q76 27 139 75t108 111 69 138 25 156q0 106-40 199t-110 162-163 110-199 41h-512q-106 0-199-40t-162-110-110-163-41-199q0-106 40-199t110-162 163-110 199-41h171q0 35-13 66t-37 54-55 36-66 14q-71 0-133 27t-108 73-73 109-27 133q0 71 27 133t73 108 108 73 133 27h512q70 0 132-27t109-73 73-108 27-133q0-92-46-168t-124-123V715zM171 683q0 91 46 167t124 124v189q-76-27-139-75T94 977 25 839 0 683q0-106 40-199t110-162 163-110 199-41h512q106 0 199 40t162 110 110 163 41 199q0 106-40 199t-110 162-163 110-199 41H853q0-35 13-66t37-54 54-37 67-14q70 0 132-27t109-73 73-108 27-133q0-70-26-132t-73-109-109-74-133-27H512q-71 0-133 27t-108 73-73 109-27 133z" class="x-hidden-focus"></path></svg></a></span>
+                                        <span class="tag">PrivateLinkResources_GetByGroupId<a target="_blank" href="&#x2F;Users&#x2F;luheng&#x2F;go&#x2F;src&#x2F;github.com&#x2F;Azure&#x2F;azure-rest-api-specs&#x2F;specification&#x2F;purview&#x2F;resource-manager&#x2F;Microsoft.Purview&#x2F;stable&#x2F;2021-12-01&#x2F;purview.json"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" class="svg_dd790ee3 x-hidden-focus" focusable="false" width="25" height="15" style="vertical-align: middle;"><path d="M1707 715q76 27 139 75t108 111 69 138 25 156q0 106-40 199t-110 162-163 110-199 41h-512q-106 0-199-40t-162-110-110-163-41-199q0-106 40-199t110-162 163-110 199-41h171q0 35-13 66t-37 54-55 36-66 14q-71 0-133 27t-108 73-73 109-27 133q0 71 27 133t73 108 108 73 133 27h512q70 0 132-27t109-73 73-108 27-133q0-92-46-168t-124-123V715zM171 683q0 91 46 167t124 124v189q-76-27-139-75T94 977 25 839 0 683q0-106 40-199t110-162 163-110 199-41h512q106 0 199 40t162 110 110 163 41 199q0 106-40 199t-110 162-163 110-199 41H853q0-35 13-66t37-54 54-37 67-14q70 0 132-27t109-73 73-108 27-133q0-70-26-132t-73-109-109-74-133-27H512q-71 0-133 27t-108 73-73 109-27 133z" class="x-hidden-focus"></path></svg></a></span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+        </section>
+
+        </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
+<script>
+    $(document).ready(() => {
+        console.log('Hello AZSDK. Document.Ready available here.');
+        addFailedEachClick();
+        addContentClick();
+        hashLinkClick();
+        document.getElementById('markdownCont').innerHTML = marked.parse(`<div>${document.getElementById('markdownTmp').innerText}`);
+        switchClick();
+    });
+
+    function addFailedEachClick() {
+        $('div.showTestFailed').each(function (index) {
+            $(this).click(function (event) {
+                var disableTr = $(this).parent().parent().next();
+                disableTr.toggle();
+                var arrow = $(this).find(".arrow")[0];
+                $(arrow).toggleClass("collapse");
+            });
+        });
+    }
+    
+    function addContentClick() {
+        $('div.content-label').each(function (index) {
+            $(this).click(function (event) {
+                var disableCon = $(this).next().next();
+                disableCon.toggle();
+                var arrow = $(this).find(".arrow")[0];
+                $(arrow).toggleClass("collapse");
+            });
+        });
+    }
+    
+    function hashLinkClick() {
+        $('span.hashLinkClass').each(function (index) {
+           $(this).click(function(event){
+                var disableCon = $(this).parent().parent().parent().parent().parent().parent().parent().parent().next()
+                var hashLinkId = $(this).data('hashLink')
+                if($(disableCon).is(":hidden")) {
+                    disableCon.toggle();
+                    var arrow = $(this).parent().parent().parent().parent().parent().parent().parent().parent().prev().find(".arrow")[0]
+                    $(arrow).toggleClass("collapse");
+                    var target_top = $(`#${hashLinkId}`).offset().top;
+                    $("html,body").scrollTop(target_top);
+                } else {
+                    var target_top = $(`#${hashLinkId}`).offset().top;
+                    $("html,body").scrollTop(target_top);
+                }
+           });
+        });
+    }
+
+    function switchClick(){
+        $('input[type=checkbox][name=reportRenderMethod]').change(function() {
+            const markdownCont = $("#markdownCont");
+            markdownCont.toggle();
+            const swaggerCont = $("#swaggerCont");
+            swaggerCont.toggle();
+        });
+    }
+</script>

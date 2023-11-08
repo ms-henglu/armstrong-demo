@@ -1,0 +1,83 @@
+{
+  "coveredSpecFiles": [
+    "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/purview/resource-manager/Microsoft.Purview/stable/2021-12-01/purview.json"
+  ],
+  "allOperations": 26,
+  "coveredOperations": 24,
+  "unCoveredOperationsList": [],
+  "failedOperations": 2,
+  "errors": [
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/purview/resource-manager/Microsoft.Purview/stable/2021-12-01/purview.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: count",
+      "issueSource": "response",
+      "operationId": "PrivateEndpointConnections_ListByAccount",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/purview/resource-manager/Microsoft.Purview/stable/2021-12-01/purview.json#L2344"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/purview/resource-manager/Microsoft.Purview/stable/2021-12-01/purview.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: count",
+      "issueSource": "response",
+      "operationId": "PrivateEndpointConnections_ListByAccount",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/purview/resource-manager/Microsoft.Purview/stable/2021-12-01/purview.json#L2344"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/purview/resource-manager/Microsoft.Purview/stable/2021-12-01/purview.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: count",
+      "issueSource": "response",
+      "operationId": "PrivateEndpointConnections_ListByAccount",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/purview/resource-manager/Microsoft.Purview/stable/2021-12-01/purview.json#L2344"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/purview/resource-manager/Microsoft.Purview/stable/2021-12-01/purview.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: count",
+      "issueSource": "response",
+      "operationId": "PrivateEndpointConnections_ListByAccount",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/purview/resource-manager/Microsoft.Purview/stable/2021-12-01/purview.json#L2344"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/purview/resource-manager/Microsoft.Purview/stable/2021-12-01/purview.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: count",
+      "issueSource": "response",
+      "operationId": "PrivateEndpointConnections_ListByAccount",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/purview/resource-manager/Microsoft.Purview/stable/2021-12-01/purview.json#L2344"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/purview/resource-manager/Microsoft.Purview/stable/2021-12-01/purview.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: count",
+      "issueSource": "response",
+      "operationId": "PrivateEndpointConnections_ListByAccount",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/purview/resource-manager/Microsoft.Purview/stable/2021-12-01/purview.json#L2344"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/purview/resource-manager/Microsoft.Purview/stable/2021-12-01/purview.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: count",
+      "issueSource": "response",
+      "operationId": "PrivateLinkResources_ListByAccount",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/purview/resource-manager/Microsoft.Purview/stable/2021-12-01/purview.json#L2368"
+    },
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/purview/resource-manager/Microsoft.Purview/stable/2021-12-01/purview.json",
+      "errorCode": "OBJECT_ADDITIONAL_PROPERTIES",
+      "errorLink": "https://github.com/Azure/azure-rest-api-specs/blob/main/documentation/Semantic-and-Model-Violations-Reference.md#object_additional_properties",
+      "errorMessage": "Additional properties not allowed: count",
+      "issueSource": "response",
+      "operationId": "PrivateLinkResources_ListByAccount",
+      "schemaPathWithPosition": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/purview/resource-manager/Microsoft.Purview/stable/2021-12-01/purview.json#L2368"
+    }
+  ]
+}

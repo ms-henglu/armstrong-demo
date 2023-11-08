@@ -1,0 +1,20 @@
+{
+  "coveredSpecFiles": [
+    "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/monitor/resource-manager/Microsoft.Insights/stable/2022-06-01/dataCollectionRules_API.json"
+  ],
+  "allOperations": 6,
+  "coveredOperations": 2,
+  "unCoveredOperationsList": [
+    {
+      "spec": "/Users/luheng/go/src/github.com/Azure/azure-rest-api-specs/specification/monitor/resource-manager/Microsoft.Insights/stable/2022-06-01/dataCollectionRules_API.json",
+      "operationIds": [
+        "DataCollectionRules_Delete",
+        "DataCollectionRules_ListByResourceGroup",
+        "DataCollectionRules_ListBySubscription",
+        "DataCollectionRules_Update"
+      ]
+    }
+  ],
+  "failedOperations": 0,
+  "errors": []
+}
